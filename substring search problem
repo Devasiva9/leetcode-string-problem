@@ -1,0 +1,66 @@
+public class SubstringSearchBruteForce {
+    public static void main(String[] args) {
+        String text = "hello world";
+        String pattern = "world";
+        
+        int result = findSubstring(text, pattern);
+        
+        if (result != -1) {
+            System.out.println("Pattern found at index: " + result);
+        } else {
+            System.out.println("Pattern not found");
+        }
+    }
+    
+    public static int findSubstring(String text, String pattern) {
+        int textLength = text.length();
+        int patternLength = pattern.length();
+        
+        // Check every possible starting position in the text
+        for (int i = 0; i <= textLength - patternLength; i++) {
+            int j;
+            
+            // Check if pattern matches at this position
+            for (j = 0; j < patternLength; j++) {
+                if (text.charAt(i + j) != pattern.charAt(j)) {
+                    break;
+                }
+            }
+            
+            // If the entire pattern was matched
+            if (j == patternLength) {
+                return i; // Return starting index of match
+            }
+        }
+        
+        return -1; // If no match found
+    }
+}
+__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+Approach
+Checking substring starting at index: 0
+Comparing text[0] = h with pattern[0] = w
+Mismatch found, moving to the next starting position
+Checking substring starting at index: 1
+Comparing text[1] = e with pattern[0] = w
+Mismatch found, moving to the next starting position
+Checking substring starting at index: 2
+Comparing text[2] = l with pattern[0] = w
+Mismatch found, moving to the next starting position
+Checking substring starting at index: 3
+Comparing text[3] = l with pattern[0] = w
+Mismatch found, moving to the next starting position
+Checking substring starting at index: 4
+Comparing text[4] = o with pattern[0] = w
+Mismatch found, moving to the next starting position
+Checking substring starting at index: 5
+Comparing text[5] =   with pattern[0] = w
+Mismatch found, moving to the next starting position
+Checking substring starting at index: 6
+Comparing text[6] = w with pattern[0] = w
+Comparing text[7] = o with pattern[1] = o
+Comparing text[8] = r with pattern[2] = r
+Comparing text[9] = l with pattern[3] = l
+Comparing text[10] = d with pattern[4] = d
+Pattern matched at index: 6
+Pattern found at index: 6
