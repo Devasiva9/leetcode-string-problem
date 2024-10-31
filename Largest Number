@@ -1,0 +1,20 @@
+import java.util.*;
+
+class Solution {
+    public String largestNumber(int[] nums) {
+        List<String> deva = new ArrayList<>();
+        for (int ch : nums) {
+            deva.add(String.valueOf(ch));
+        }
+        deva.sort((a, b) -> (b + a).compareTo(a + b));
+        if (deva.get(0).equals("0")) {
+            return "0";
+        }
+        StringBuilder largestNumber = new StringBuilder();
+        for (String value : deva) {
+            largestNumber.append(value);
+        }
+
+        return largestNumber.toString();
+    }
+}
