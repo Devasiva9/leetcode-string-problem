@@ -1,0 +1,24 @@
+class Solution {
+    public String compressedString(String word) {
+        char[] deva = word.toCharArray();
+        StringBuilder comp = new StringBuilder();
+        char curr = deva[0];
+        int count = 1;
+        for(int i =1;i<deva.length;i++)
+        {
+            if(deva[i] == curr && count<9)
+            {
+                count++;
+            }
+            else
+            {
+                comp.append(count).append(curr);
+                curr = deva[i];
+                count = 1;
+            }
+        }
+        comp.append(count).append(curr);
+        return comp.toString();
+
+    }
+}
